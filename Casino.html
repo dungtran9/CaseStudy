@@ -19,53 +19,27 @@ for (let i=18;i<27;i++){
 for (let i=27;i<36;i++){
     cards[i]=i+4;
 }
-let a,b,c,d,e,f
 let card = new Array()
-    a= Math.floor(Math.random()*35);
-card.push(a);
-for (let i=0;i<card.length;i++){
-    b= Math.floor(Math.random()*35);
-    while (b==card[i]){
-        b= Math.floor(Math.random()*35);
-
-    break;}
+for (let i=0;i<6;i++){
+    let number1 = Math.floor(Math.random()*35);
+    if( i==0 ){
+        card.push(number1);
+    }
+    else{
+        checkIsset(card,number1);
+    }
 }
-card.push(b);
-for (let i=0;i<card.length;i++){
-    c= Math.floor(Math.random()*35);
-    while (c==card[i]){
-        c= Math.floor(Math.random()*35);
-
-        break;}
+function checkIsset(card,number){
+    if (card.indexOf(number) === -1){
+        card.push(number);
+        return number;
+    }
+    else{
+        let number2 = Math.floor(Math.random()*35);
+        checkIsset(card,number2);
+    }
 }
-card.push(c);
-for (let i=0;i<card.length;i++){
-    d= Math.floor(Math.random()*35);
-    while (d==card[i]){
-
-        d= Math.floor(Math.random()*35);
-        break;}
-}
-card.push(d);
-for (let i=0;i<card.length;i++){
-    e= Math.floor(Math.random()*35);
-    while (e==card[i]){
-
-        e= Math.floor(Math.random()*35);
-        break;}
-}
-card.push(e);
-for (let i=0;i<card.length;i++){
-    f= Math.floor(Math.random()*35);
-    while (f==card[i]){
-        f= Math.floor(Math.random()*35);
-
-        break;}
-}
-card.push(f);
-console.log(card)
-
-
+console.log(card);
 </script>
 </body>
 </html>

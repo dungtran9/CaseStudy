@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trò Chơi 3 cây</title>
+</head>
+<body>
+<script>
+    let cards = new Array();
+    for (let i=0;i<6;i++){
+        let number1 = Math.floor(Math.random()*35);
+        if( i==0 ){
+            cards.push(number1);
+        }
+        else{
+            checkIsset(cards,number1);
+        }
+    }
+    function checkIsset(cards, number ){
+        if (cards.indexOf(number) === -1){
+            cards.push(number);
+            return number
+        }
+        else{
+            let number2 = Math.floor(Math.random()*35);
+            checkIsset(cards,number2);
+        }
+    }
+    console.log(cards);
+
+</script>
+</body>
+</html>
