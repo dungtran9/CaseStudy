@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Trò Chơi 3 cây</title>
 </head>
 <body>
+<script>
+let cards = new Array();
+for (let i=0;i<9;i++){
+    cards[i]=i+1;
+}
+for (let i=9;i<18;i++){
+    cards[i]=i+2;
+}
+for (let i=18;i<27;i++){
+    cards[i]=i+3;
+}
+for (let i=27;i<36;i++){
+    cards[i]=i+4;
+}
+let a,b,c,d,e,f
+do {
+    a= Math.floor(Math.random()*35);
+    b= Math.floor(Math.random()*35);
+    c= Math.floor(Math.random()*35);
+    d= Math.floor(Math.random()*35);
+    e= Math.floor(Math.random()*35);
+    f= Math.floor(Math.random()*35);
+}while (a==b&&b==c&&c==d&&d==e&&e==f);
+document.write(a + "<br>")
+document.write(b + "<br>")
+document.write(c + "<br>")
+document.write(d + "<br>")
+document.write(e + "<br>")
+document.write(f + "<br>")
 
+
+</script>
 </body>
 </html>
