@@ -45,6 +45,7 @@ let player1 =[cards[card[0]],cards[card[1]],cards[card[2]]];
 let player2 =[cards[card[3]],cards[card[4]],cards[card[5]]];
 console.log(player1);
 console.log(player2);
+function checkWin(){
 let sum1 = cards[card[0]]+cards[card[1]]+cards[card[2]];
 let point1 = (sum1)%10;
 if (point1==0){point1=10}
@@ -59,6 +60,8 @@ document.write("Player2 :"+ cards[card[3]] +","+ cards[card[4]] +","+ cards[card
         if (point1=point2) {
     document.write("Hoa`")}
 else {document.write("Player2 win")}
+}
+checkWin()
 </script>
 </body>
 </html>
