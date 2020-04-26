@@ -20,20 +20,50 @@ for (let i=27;i<36;i++){
     cards[i]=i+4;
 }
 let a,b,c,d,e,f
-do {
+let card = new Array()
     a= Math.floor(Math.random()*35);
+card.push(a);
+for (let i=0;i<card.length;i++){
     b= Math.floor(Math.random()*35);
+    while (b==card[i]){
+        b= Math.floor(Math.random()*35);
+
+    break;}
+}
+card.push(b);
+for (let i=0;i<card.length;i++){
     c= Math.floor(Math.random()*35);
+    while (c==card[i]){
+        c= Math.floor(Math.random()*35);
+
+        break;}
+}
+card.push(c);
+for (let i=0;i<card.length;i++){
     d= Math.floor(Math.random()*35);
+    while (d==card[i]){
+
+        d= Math.floor(Math.random()*35);
+        break;}
+}
+card.push(d);
+for (let i=0;i<card.length;i++){
     e= Math.floor(Math.random()*35);
+    while (e==card[i]){
+
+        e= Math.floor(Math.random()*35);
+        break;}
+}
+card.push(e);
+for (let i=0;i<card.length;i++){
     f= Math.floor(Math.random()*35);
-}while (a==b&&b==c&&c==d&&d==e&&e==f);
-document.write(a + "<br>")
-document.write(b + "<br>")
-document.write(c + "<br>")
-document.write(d + "<br>")
-document.write(e + "<br>")
-document.write(f + "<br>")
+    while (f==card[i]){
+        f= Math.floor(Math.random()*35);
+
+        break;}
+}
+card.push(f);
+console.log(card)
 
 
 </script>
