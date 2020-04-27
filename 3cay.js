@@ -1,63 +1,71 @@
-
-    let cards = new Array();
-    for (let i = 0; i < 9; i++) {
-        cards[i] = i + 1;
-    }
-    for (let i = 9; i < 18; i++) {
-        cards[i] = i - 8;
-    }
-    for (let i = 18; i < 27; i++) {
-        cards[i] = i - 17;
-    }
-    for (let i = 27; i < 36; i++) {
-        cards[i] = i - 26;
-    }
-    let card = new Array()
-
-    for (let i = 0; i < 6; i++) {
-        let number1 = Math.floor(Math.random() * 35);
-        if (i == 0) {
-            card.push(number1);
-        } else {
-            checkIsset(card, number1);
-        }
-    }
-
-    function checkIsset(card, number) {
-        if (card.indexOf(number) === -1) {
-            card.push(number);
-            return number;
-        } else {
-            let number2 = Math.floor(Math.random() * 35);
-            checkIsset(card, number2);
-        }
-    }
-
-    console.log(card);
-    let player1 = [cards[card[0]], cards[card[1]], cards[card[2]]];
-    let player2 = [cards[card[3]], cards[card[4]], cards[card[5]]];
-    console.log(player1);
-    console.log(player2);
-        let sum1 = cards[card[0]] + cards[card[1]] + cards[card[2]];
-        let point1 = (sum1) % 10;
-        if (point1 == 0) {
-            point1 = 10
-        }
-        let sum2 = cards[card[3]] + cards[card[4]] + cards[card[5]];
-        let point2 = (sum2) % 10;
-        if (point2 == 0) {
-            point2 = 10
-        }
-        document.write("Player1 :" + cards[card[0]] + "," + cards[card[1]] + "," + cards[card[2]] + ", tong diem" + point1 + "<br>")
-        document.write("Player2 :" + cards[card[3]] + "," + cards[card[4]] + "," + cards[card[5]] + ", tong diem" + point2 + "<br>")
-    function checkWin() {
-        if (point1 > point2) {
-            document.write("Player1 win")
-        } else if (point1 = point2) {
-            document.write("Hoa`")
-        } else {
-            document.write("Player2 win")
-        }
-    }
-    checkWin()
-
+function Cards(name, value) {
+    this.name = name;
+    this.value = value;
+}
+let cards = new Array()
+let diamonds = new Array();
+for (let i = 0; i < 9; i++) {
+    diamonds[i] = new Cards("D", i+1);
+    cards.push(diamonds[i]);
+}
+let hearts = new Array();
+for (let i=0; i<9; i++){
+ hearts[i] =new Cards("H", i+1);
+ cards.push(hearts[i]);
+};
+let clubs =new Array();
+for (let i=0; i<9;i++){
+ clubs[i] =new Cards("C", i+1);
+ cards.push(clubs[i]);
+};
+let spades =new Array();
+for (let i=0; i<9;i++){
+ spades[i] =new Cards("S", i+1);
+ cards.push(spades[i]);
+};
+let img1 = document.getElementById("cardback1")
+let img2 = document.getElementById("cardback2")
+let img3 = document.getElementById("cardback3")
+let img4 = document.getElementById("cardback4")
+let img5 = document.getElementById("cardback5")
+let img6 = document.getElementById("cardback6")
+function start() {
+ function findNums(){
+  let nums = new Array();
+  for (let i=0;i<6;i++){
+   let number1 = Math.floor(Math.random()*35);
+   if( i==0 ){
+    nums.push(number1);
+   }
+   else{
+    checkIsset(nums,number1);
+   }
+  }
+  function checkIsset(nums, number ){
+   if (nums.indexOf(number) === -1){
+    nums.push(number);
+    return number
+   }
+   else{
+    let number2 = Math.floor(Math.random()*35);
+    checkIsset(nums,number2);
+   }
+  }
+  return nums
+ }
+ let N=findNums();
+ img1.src = "card_deck/"+cards[N[0]].value+cards[N[0]].name+".jpg"
+ img2.src = "card_deck/"+cards[N[1]].value+cards[N[1]].name+".jpg"
+ img3.src = "card_deck/"+cards[N[2]].value+cards[N[2]].name+".jpg"
+ img4.src = "card_deck/"+cards[N[3]].value+cards[N[3]].name+".jpg"
+ img5.src = "card_deck/"+cards[N[4]].value+cards[N[4]].name+".jpg"
+ img6.src = "card_deck/"+cards[N[5]].value+cards[N[5]].name+".jpg"
+}
+function reset() {
+img1.src="card_deck/cardback.jpg"
+img2.src="card_deck/cardback.jpg"
+img3.src="card_deck/cardback.jpg"
+img4.src="card_deck/cardback.jpg"
+img5.src="card_deck/cardback.jpg"
+img6.src="card_deck/cardback.jpg"
+}
