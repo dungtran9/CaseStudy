@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Trò Chơi 3 cây</title>
+
 </head>
+<style>
+    img{
+        width: 100px;
+        height: auto;
+    }
+</style>
 <body>
+
+<div id="desk">
+</div>
+<input type="button" id="button" value="Play" onclick="shareCard()">
 <h3>Player1</h3>
-<img src="card_deck/cardback.jpg" id="cardback1" height="200" width="150">
-<img src="card_deck/cardback.jpg" id="cardback2" height="200" width="150">
-<img src="card_deck/cardback.jpg" id="cardback3" height="200" width="150">
+<div id="player1" >
+</div>
 <h3>Player2</h3>
-<img src="card_deck/cardback.jpg" id="cardback4" height="200" width="150">
-<img src="card_deck/cardback.jpg" id="cardback5" height="200" width="150">
-<img src="card_deck/cardback.jpg" id="cardback6" height="200" width="150">
-<br>
-<input type="button" onclick="start()" id="button" value="Start">
-<input type="button" onclick="reset()" id="reset" value="Reset">
-<script src="3cay.js"></script>
+<div id ="player2"></div>
+<div id ="result"></div>
+<script src="card.js"></script>
 
 </body>
 </html>

@@ -53,7 +53,7 @@ function start() {
   }
   return nums
  }
- let N=findNums();
+ let N=findNums();n
  img1.src = "card_deck/"+cards[N[0]].value+cards[N[0]].name+".jpg"
  img2.src = "card_deck/"+cards[N[1]].value+cards[N[1]].name+".jpg"
  img3.src = "card_deck/"+cards[N[2]].value+cards[N[2]].name+".jpg"
