@@ -22,7 +22,7 @@ class Card {
 cards = [];
 
 function createDesk() {
-    let arr = ["C", "D", "H", "S"];
+    let arr = ["S", "C", "H", "D"];
     for (let i = 1; i < 10; i++) {
         for (let j = 0; j < arr.length; j++) {
             let name = i + arr[j];
@@ -92,16 +92,56 @@ function shareCard() {
     }
 
     showShare(num[0], num[1], num[2], num[3], num[4], num[5])
-    point1 = cards[num[0]].value + cards[num[1]].value + cards[num[2]].value;
-    point2 = cards[num[3]].value + cards[num[4]].value + cards[num[5]].value
-    setTimeout(checkWin, 1000)
+    point1 = (cards[num[0]].value + cards[num[1]].value + cards[num[2]].value) % 10;
+    point2 = (cards[num[3]].value + cards[num[4]].value + cards[num[5]].value) % 10;
+    if (point1 == 0) {
+        point1 = 10
+    }
+    ;
+    if (point2 == 0) {
+        point2 = 10
+    }
+    setTimeout(checkWin, 500)
 
     function checkWin() {
+
         if (point1 > point2) {
             document.getElementById("result").innerHTML = "Player1 win"
-        } else {
+        } else if (point1 < point2) {
             document.getElementById("result").innerHTML = "Player2 win"
+        } else if (point1 = point2) {
+            if (cards[num[0]].id > cards[num[3]].id &&
+                cards[num[0]].id > cards[num[4]].id &&
+                cards[num[0]].id > cards[num[5]].id) {
+                document.getElementById("result").innerHTML = "Player1 win"
+            }
+            if (cards[num[1]].id > cards[num[3]].id &&
+                cards[num[1]].id > cards[num[4]].id &&
+                cards[num[1]].id > cards[num[5]].id) {
+                document.getElementById("result").innerHTML = "Player1 win"
+            }
+            if (cards[num[2]].id > cards[num[3]].id &&
+                cards[num[2]].id > cards[num[4]].id &&
+                cards[num[2]].id > cards[num[5]].id) {
+                document.getElementById("result").innerHTML = "Player1 win"
+            }
+            if (cards[num[3]].id > cards[num[0]].id &&
+                cards[num[3]].id > cards[num[1]].id &&
+                cards[num[3]].id > cards[num[2]].id) {
+                document.getElementById("result").innerHTML = "Player2 win"
+            }
+            if (cards[num[4]].id > cards[num[0]].id &&
+                cards[num[4]].id > cards[num[1]].id &&
+                cards[num[4]].id > cards[num[2]].id) {
+                document.getElementById("result").innerHTML = "Player2 win"
+            }
+            if (cards[num[5]].id > cards[num[0]].id &&
+                cards[num[5]].id > cards[num[1]].id &&
+                cards[num[5]].id > cards[num[2]].id) {
+                document.getElementById("result").innerHTML = "Player2 win"
+            }
         }
     }
 }
+
 
