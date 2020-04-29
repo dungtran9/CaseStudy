@@ -65,42 +65,61 @@ class Desk {
         document.getElementById("desk").innerHTML = desk;
     }
 }
+
 let desk = new Desk()
 desk.create();
 desk.show()
+
 class Player {
-   constructor(name) {
-       this.name = name;
-       this.cards =[];
-       this.money = 1000;
-   }
-   getScore(){
-       let sum = 0;
-       for (let i = 0; i <this.cards.length ; i++) {
-           sum+=this.cards[i].value;
-       }
-       sum = sum%10==0?10:sum%10;
-       console.log(sum%10)
-       return sum;
-   }
-   addCards(){
-       for (let i = 0; i < 3; i++) {
-           let num = Math.floor(Math.random() * desk.cards.length);
-           this.cards.push(desk.cards[num]);
-           desk.cards.slice(num, 1);
-       }
-   }
+    constructor(name) {
+        this.name = name;
+        this.cards = [];
+        this.money = 1000;
+    }
+
+    getScore() {
+        let sum = 0;
+        for (let i = 0; i < this.cards.length; i++) {
+            sum += this.cards[i].value;
+        }
+        sum = sum % 10 == 0 ? 10 : sum % 10;
+        console.log(sum % 10)
+        return sum;
+    }
+
+    addCards() {
+        for (let i = 0; i < 3; i++) {
+            let num = Math.floor(Math.random() * desk.cards.length);
+            this.cards.push(desk.cards[num]);
+            desk.cards.slice(num, 1);
+        }
+    }
+
     draft(desk) {
         let aaa = "";
         for (let i = 0; i < 3; i++) {
-            aaa+= this.cards[i].draw()
+            aaa += this.cards[i].draw()
+        }
+        document.getElementById(desk).innerHTML = aaa;
+    }
+
+    back(desk) {
+        let aaa = "";
+        for (let i = 0; i < 3; i++) {
+            aaa += this.cards[i].hidden()
         }
         document.getElementById(desk).innerHTML = aaa;
     }
 }
+
 let player1 = new Player("Dung");
 let player2 = new Player("Dung");
-player1.addCards();
-player2.addCards();
-player1.draft("desk1")
-player2.draft("desk2")
+
+function gameBoard() {
+    player1.addCards();
+    player2.addCards();
+    player1.draft("desk1")
+    player2.draft("desk2")
+}
+
+
