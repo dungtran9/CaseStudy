@@ -31,13 +31,12 @@ function clickCard(id) {
         }
     }
     desk.show();
-
 }
 
 class Desk {
     constructor() {
         this.cards = [];
-
+        this.dra = []
     }
 
     create() {
@@ -66,7 +65,6 @@ class Desk {
         document.getElementById("desk").innerHTML = desk;
     }
 }
-
 let desk = new Desk()
 desk.create();
 desk.show()
@@ -76,7 +74,6 @@ class Player {
        this.cards =[];
        this.money = 1000;
    }
-
    getScore(){
        let sum = 0;
        for (let i = 0; i <this.cards.length ; i++) {
@@ -89,8 +86,17 @@ class Player {
    addCards(a,b,c){
        this.cards.push(a,b,c);
    }
+   draft() {
+        for (let i = 0; i < 3; i++) {
+            let num = Math.floor(Math.random() * desk.cards.length);
+            this.cards.push(desk.cards[num]);
+            desk.cards.slice(num, 1);
+        }
+    }
 }
 let player1 = new Player("Dung");
-player1.addCards(desk.cards[1],desk.cards[2],desk.cards[30]);
-
+let player2 = new Player("Dung");
+player1.draft();
+player2.draft();
+console.log(player1.cards)
 
