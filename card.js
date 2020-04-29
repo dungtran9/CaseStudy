@@ -134,8 +134,8 @@ function gameBoard() {
     player1.draft("desk1")
     player2.draft("desk2")
     desk.getWiner(player1, player2)
-    console.log(player1.cards)
-    console.log(player2.cards)
+    console.log(player1.cards.id)
+    console.log(player2.cards.id)
 }
 
 
