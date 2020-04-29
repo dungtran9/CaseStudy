@@ -71,13 +71,16 @@ class Desk {
             document.getElementById("result").innerHTML= player1.name+": Win" + "<br> " +
                  player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
 
-        };
-        if (player1.getScore()<player2.getScore()){
+        }
+       else if (player1.getScore()<player2.getScore()){
             player2.money = player2.money +100;
             player1.money = player1.money -100;
             document.getElementById("result").innerHTML= player2.name+": Win" + "<br> " +
                 player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
-        };
+        }else{
+
+        }
+
     }
 }
 
@@ -98,7 +101,6 @@ class Player {
             sum += this.cards[i].value;
         }
         sum = sum % 10 == 0 ? 10 : sum % 10;
-        console.log(sum % 10)
         return sum;
     }
 
@@ -106,7 +108,7 @@ class Player {
         for (let i = 0; i < 3; i++) {
             let num = Math.floor(Math.random() * desk.cards.length);
             this.cards.push(desk.cards[num]);
-            desk.cards.slice(num, 1);
+            desk.cards.splice(num, 1);
         }
     }
 
@@ -117,18 +119,21 @@ class Player {
         }
         document.getElementById(desk).innerHTML = aaa;
     }
-
+     reGame(){
+        this.cards=[]
+     }
 }
-
-let player1 = new Player("Quan");
-let player2 = new Player("Son");
-
+let player1 = new Player("Player1");
+let player2 = new Player("Player2");
 function gameBoard() {
+    desk.create();
+    player1.reGame();
+    player2.reGame();
     player1.addCards();
     player2.addCards();
     player1.draft("desk1")
     player2.draft("desk2")
     desk.getWiner(player1,player2)
 }
-
+console.log((player1.cards)[0])
 
