@@ -83,20 +83,24 @@ class Player {
        console.log(sum%10)
        return sum;
    }
-   addCards(a,b,c){
-       this.cards.push(a,b,c);
+   addCards(){
+       for (let i = 0; i < 3; i++) {
+           let num = Math.floor(Math.random() * desk.cards.length);
+           this.cards.push(desk.cards[num]);
+           desk.cards.slice(num, 1);
+       }
    }
-   draft() {
+    draft(desk) {
+        let aaa = "";
         for (let i = 0; i < 3; i++) {
-            let num = Math.floor(Math.random() * desk.cards.length);
-            this.cards.push(desk.cards[num]);
-            desk.cards.slice(num, 1);
+            aaa+= this.cards[i].draw()
         }
+        document.getElementById(desk).innerHTML = aaa;
     }
 }
 let player1 = new Player("Dung");
 let player2 = new Player("Dung");
-player1.draft();
-player2.draft();
-console.log(player1.cards)
-
+player1.addCards();
+player2.addCards();
+player1.draft("desk1")
+player2.draft("desk2")
