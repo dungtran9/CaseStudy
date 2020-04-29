@@ -64,23 +64,20 @@ class Desk {
         }
         document.getElementById("desk").innerHTML = desk;
     }
-    getWiner(player1,player2){
-        if (player1.getScore()>player2.getScore()){
-            player1.money = player1.money +100;
-            player2.money = player2.money -100;
-            document.getElementById("result").innerHTML= player1.name+": Win" + "<br> " +
-                 player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
 
+    getWiner(player1, player2) {
+        if (player1.getScore() > player2.getScore()) {
+            player1.money = player1.money + 100;
+            player2.money = player2.money - 100;
+            document.getElementById("result").innerHTML = player1.name + ": Win" + "<br> " +
+                player1.name + ": " + player1.money + " $" + "<br>" + player2.name + ": " + player2.money + " $"
+
+        } else if (player1.getScore() <= player2.getScore()) {
+            player2.money = player2.money + 100;
+            player1.money = player1.money - 100;
+            document.getElementById("result").innerHTML = player2.name + ": Win" + "<br> " +
+                player1.name + ": " + player1.money + " $" + "<br>" + player2.name + ": " + player2.money + " $"
         }
-       else if (player1.getScore()<player2.getScore()){
-            player2.money = player2.money +100;
-            player1.money = player1.money -100;
-            document.getElementById("result").innerHTML= player2.name+": Win" + "<br> " +
-                player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
-        }else{
-
-        }
-
     }
 }
 
@@ -119,12 +116,15 @@ class Player {
         }
         document.getElementById(desk).innerHTML = aaa;
     }
-     reGame(){
-        this.cards=[]
-     }
+
+    reGame() {
+        this.cards = []
+    }
 }
+
 let player1 = new Player("Player1");
 let player2 = new Player("Player2");
+
 function gameBoard() {
     desk.create();
     player1.reGame();
@@ -133,7 +133,7 @@ function gameBoard() {
     player2.addCards();
     player1.draft("desk1")
     player2.draft("desk2")
-    desk.getWiner(player1,player2)
+    desk.getWiner(player1, player2)
 }
-console.log((player1.cards)[0])
+
 
