@@ -64,6 +64,21 @@ class Desk {
         }
         document.getElementById("desk").innerHTML = desk;
     }
+    getWiner(player1,player2){
+        if (player1.getScore()>player2.getScore()){
+            player1.money = player1.money +100;
+            player2.money = player2.money -100;
+            document.getElementById("result").innerHTML= player1.name+": win" + "<br> " +
+                 player1.name +":"+ player1.money +"$$$"+"<br>"+ player2.name +":"+ player2.money +"$$$"
+
+        };
+        if (player1.getScore()<player2.getScore()){
+            player2.money = player2.money +100;
+            player1.money = player1.money -100;
+            document.getElementById("result").innerHTML= player2.name+": win" + "<br> " +
+                player1.name +":"+ player1.money +"$$$"+"<br>"+ player2.name +":"+ player2.money +"$$$"
+        };
+    }
 }
 
 let desk = new Desk()
@@ -103,23 +118,17 @@ class Player {
         document.getElementById(desk).innerHTML = aaa;
     }
 
-    back(desk) {
-        let aaa = "";
-        for (let i = 0; i < 3; i++) {
-            aaa += this.cards[i].hidden()
-        }
-        document.getElementById(desk).innerHTML = aaa;
-    }
 }
 
-let player1 = new Player("Dung");
-let player2 = new Player("Dung");
+let player1 = new Player("Quan");
+let player2 = new Player("Son");
 
 function gameBoard() {
     player1.addCards();
     player2.addCards();
     player1.draft("desk1")
     player2.draft("desk2")
+    desk.getWiner(player1,player2)
 }
 
 
