@@ -68,15 +68,15 @@ class Desk {
         if (player1.getScore()>player2.getScore()){
             player1.money = player1.money +100;
             player2.money = player2.money -100;
-            document.getElementById("result").innerHTML= player1.name+": win" + "<br> " +
-                 player1.name +":"+ player1.money +"$$$"+"<br>"+ player2.name +":"+ player2.money +"$$$"
+            document.getElementById("result").innerHTML= player1.name+": Win" + "<br> " +
+                 player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
 
         };
         if (player1.getScore()<player2.getScore()){
             player2.money = player2.money +100;
             player1.money = player1.money -100;
-            document.getElementById("result").innerHTML= player2.name+": win" + "<br> " +
-                player1.name +":"+ player1.money +"$$$"+"<br>"+ player2.name +":"+ player2.money +"$$$"
+            document.getElementById("result").innerHTML= player2.name+": Win" + "<br> " +
+                player1.name +": "+ player1.money +" $"+"<br>"+ player2.name +": "+ player2.money +" $"
         };
     }
 }
