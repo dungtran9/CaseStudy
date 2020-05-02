@@ -40,6 +40,7 @@ class Desk {
     }
 
     create() {
+        this.cards = [];
         let arr = ["S", "C", "H", "D"];
         for (let i = 1; i < 10; i++) {
             for (let j = 0; j < arr.length; j++) {
@@ -107,6 +108,7 @@ class Player {
             this.cards.push(desk.cards[num]);
             desk.cards.splice(num, 1);
         }
+        console.log(desk.cards)
     }
 
     draft(desk) {
@@ -126,7 +128,7 @@ let player1 = new Player("Player1");
 let player2 = new Player("Player2");
 
 function gameBoard() {
-    desk.create();
+desk.create();
     player1.reGame();
     player2.reGame();
     player1.addCards();
@@ -134,8 +136,7 @@ function gameBoard() {
     player1.draft("desk1")
     player2.draft("desk2")
     desk.getWiner(player1, player2)
-    console.log(player1.cards.id)
-    console.log(player2.cards.id)
+
 }
 
 
