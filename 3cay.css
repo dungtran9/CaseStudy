@@ -1,0 +1,41 @@
+img{
+    width: 150px;
+    height: auto;
+}
+#main{
+    background-color: #FFEB3B;
+    background-image: url("photo.jpg");
+    background-size: 700px 600px;
+}
+#button3{
+    margin: 0px auto;
+    text-align: center;
+    height: 50px;
+    width: 50%;
+    background-color: greenyellow;
+    font-weight: bold;
+    font-size: 40px;
+
+}
+#player1{
+    font-size: 30px;
+    margin: 0px auto;
+    text-align: center;
+}
+#player2{
+    font-size: 30px;
+    margin: 0px auto;
+    text-align: center;
+}
+#desk1{
+    margin: 0px auto;
+    text-align: center;
+}
+#desk2{
+    margin: 0px auto;
+    text-align: center;
+}
+#desk3{
+    margin: 0px auto;
+    text-align: center;
+}
