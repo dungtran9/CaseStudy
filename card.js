@@ -36,7 +36,6 @@ function clickCard(id) {
 class Desk {
     constructor() {
         this.cards = [];
-        this.dra = []
     }
 
     create() {
@@ -46,7 +45,7 @@ class Desk {
             for (let j = 0; j < arr.length; j++) {
                 let name = i + arr[j];
                 let id = j * 10 + i;
-                let value = i
+                let value = i;
                 let img = name + ".jpg";
                 let card = new Card(id, name, value, img)
                 this.cards.push(card);
@@ -66,31 +65,46 @@ class Desk {
         document.getElementById("desk").innerHTML = desk;
     }
 
+    showWin(player1, player2, a, b) {
+        player1.money = player1.money + 100;
+        player2.money = player2.money - 100;
+        document.getElementById(a).innerHTML = player1.name + ": Win " + player1.money + " $"
+        document.getElementById(b).innerHTML = player2.name + ":  " + player2.money + " $"
+        if (player1.money == 2000 || player2.money == 2000) {
+            alert(player1.name + " win ");
+            player1.money = 1000;
+            player2.money = 1000;
+
+        }
+
+    }
+
     getWiner(player1, player2) {
         if (player1.getScore() > player2.getScore()) {
-            player1.money = player1.money + 100;
-            player2.money = player2.money - 100;
-            document.getElementById("result").innerHTML = player1.name + ": Win" + "<br> " +
-                player1.name + ": " + player1.money + " $" + "<br>" + player2.name + ": " + player2.money + " $"
-
-        } else if (player1.getScore() <= player2.getScore()) {
-            player2.money = player2.money + 100;
-            player1.money = player1.money - 100;
-            document.getElementById("result").innerHTML = player2.name + ": Win" + "<br> " +
-                player1.name + ": " + player1.money + " $" + "<br>" + player2.name + ": " + player2.money + " $"
+            this.showWin(player1, player2, "player1", "player2")
+        } else if (player1.getScore() < player2.getScore()) {
+            this.showWin(player2, player1, "player2", "player1")
+        } else if (player1.getScore() == player2.getScore()) {
+            if (player1.getMax() > player2.getMax()) {
+                this.showWin(player1, player2, "player1", "player2")
+            } else if (player2.getMax() > player1.getMax()) {
+                this.showWin(player2, player1, "player2", "player1")
+            }
         }
     }
 }
 
 let desk = new Desk()
 desk.create();
-desk.show()
+
 
 class Player {
     constructor(name) {
         this.name = name;
         this.cards = [];
         this.money = 1000;
+        this.max = [];
+
     }
 
     getScore() {
@@ -106,9 +120,11 @@ class Player {
         for (let i = 0; i < 3; i++) {
             let num = Math.floor(Math.random() * desk.cards.length);
             this.cards.push(desk.cards[num]);
+            this.max.push(desk.cards[num].id);
             desk.cards.splice(num, 1);
+
         }
-        console.log(desk.cards)
+
     }
 
     draft(desk) {
@@ -121,6 +137,11 @@ class Player {
 
     reGame() {
         this.cards = []
+        this.max = []
+    }
+
+    getMax() {
+        return Math.max.apply(Math, this.max);
     }
 }
 
@@ -128,7 +149,7 @@ let player1 = new Player("Player1");
 let player2 = new Player("Player2");
 
 function gameBoard() {
-desk.create();
+    desk.create();
     player1.reGame();
     player2.reGame();
     player1.addCards();
@@ -136,7 +157,6 @@ desk.create();
     player1.draft("desk1")
     player2.draft("desk2")
     desk.getWiner(player1, player2)
-
 }
 
 
