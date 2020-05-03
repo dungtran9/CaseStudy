@@ -7,17 +7,36 @@
 </head>
 <style>
     img{
-        width: 100px;
+        width: 150px;
         height: auto;
+    }
+    #main{
+        background-color: #FFEB3B;
+    }
+  #button3{
+      height: 50px;
+      width: 600px;
+      text-align: center;
+      background-color: greenyellow;
+      font-weight: bold;
+      font-size: 40px;
+  }
+    #player1{
+        font-size: 30px;
+    }
+    #player2{
+        font-size: 30px;
     }
 </style>
 <body>
-<div id="player1">Player1</div>
+<div id="main">
+<div id="player1"></div>
 <div id="desk1" >
 </div>
-<div id="player2">Player2</div>
+<div id="player2"></div>
 <div id ="desk2"></div>
 <input type="button" id="button3" value="PlayGame" onclick="gameBoard()">
+</div>
 <script src="card.js"></script>
 
 </body>
