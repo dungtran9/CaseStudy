@@ -10,28 +10,15 @@ class Card {
     }
 
     draw() {
-        let img = `<img src="card_deck/${this.img}" onclick="clickCard(${this.id})">`;
+        let img = `<img src="card_deck/${this.img}" >`;
         return img;
     }
 
-    hidden() {
-        let img = `<img src="card_deck/${this.default}" onclick="clickCard(${this.id})">`;
-        return img;
-    }
 
 }
 
 cards = [];
 
-
-function clickCard(id) {
-    for (let i = 0; i < desk.cards.length; i++) {
-        if (desk.cards[i].id === id) {
-            desk.cards[i].status = true;
-        }
-    }
-    desk.show();
-}
 
 class Desk {
     constructor() {
@@ -51,18 +38,6 @@ class Desk {
                 this.cards.push(card);
             }
         }
-    }
-
-    show() {
-        let desk = "";
-        for (let i = 0; i < this.cards.length; i++) {
-            if (this.cards[i].status) {
-                desk += this.cards[i].draw();
-            } else {
-                desk += this.cards[i].hidden();
-            }
-        }
-        document.getElementById("desk").innerHTML = desk;
     }
 
     showWin(player1, player2, a, b) {
@@ -96,7 +71,6 @@ class Desk {
 
 let desk = new Desk()
 desk.create();
-
 
 class Player {
     constructor(name) {
