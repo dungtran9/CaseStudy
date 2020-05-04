@@ -3,28 +3,19 @@ class Card {
         this.id = id;
         this.name = name;
         this.value = value;
-        this.status = false;
         this.img = img;
-        this.default = "cardback.jpg";
-
     }
-
     draw() {
         let img = `<img src="card_deck/${this.img}" >`;
         return img;
     }
 
-
 }
-
-cards = [];
-
 
 class Desk {
     constructor() {
         this.cards = [];
     }
-
     create() {
         this.cards = [];
         let arr = ["S", "C", "H", "D"];
